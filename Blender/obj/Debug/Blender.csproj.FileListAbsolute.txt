@@ -1,0 +1,14 @@
+C:\Users\Trbry\Documents\GitHub\Blender\Blender\bin\Debug\Blender.exe.config
+C:\Users\Trbry\Documents\GitHub\Blender\Blender\bin\Debug\Blender.exe
+C:\Users\Trbry\Documents\GitHub\Blender\Blender\bin\Debug\Blender.pdb
+C:\Users\Trbry\Documents\GitHub\Blender\Blender\bin\Debug\MetroFramework.Design.dll
+C:\Users\Trbry\Documents\GitHub\Blender\Blender\bin\Debug\MetroFramework.dll
+C:\Users\Trbry\Documents\GitHub\Blender\Blender\bin\Debug\MetroFramework.Fonts.dll
+C:\Users\Trbry\Documents\GitHub\Blender\Blender\obj\Debug\Blender.Properties.Resources.resources
+C:\Users\Trbry\Documents\GitHub\Blender\Blender\obj\Debug\Blender.View.resources
+C:\Users\Trbry\Documents\GitHub\Blender\Blender\obj\Debug\Blender.csproj.GenerateResource.cache
+C:\Users\Trbry\Documents\GitHub\Blender\Blender\obj\Debug\Blender.csproj.CoreCompileInputs.cache
+C:\Users\Trbry\Documents\GitHub\Blender\Blender\obj\Debug\Blender.csproj.CopyComplete
+C:\Users\Trbry\Documents\GitHub\Blender\Blender\obj\Debug\Blender.exe
+C:\Users\Trbry\Documents\GitHub\Blender\Blender\obj\Debug\Blender.pdb
+C:\Users\Trbry\Documents\GitHub\Blender\Blender\obj\Debug\Blender.csprojAssemblyReference.cache
