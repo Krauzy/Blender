@@ -23,7 +23,7 @@ namespace Blender.Tools
             this.width = width;
             this.height = height;
             this.bits = new int[width * height];
-            this.handle = GCHandle.Alloc(Bits, GCHandleType.Pinned);
+            this.handle = GCHandle.Alloc(this.bits, GCHandleType.Pinned);
             this.bitmap = new Bitmap(width, height, width * 4, PixelFormat.Format32bppPArgb, this.handle.AddrOfPinnedObject());
         }
 

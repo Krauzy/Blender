@@ -25,8 +25,8 @@ namespace Blender._3D
         private Arr light = new Arr(10, 10, 10);
         private double[,] buffer;
         private double[,] MA = new double[4, 4];
-        public int dx = 425;
-        public int dy = 375;
+        public int dx = 286;
+        public int dy = 296;
 
         public Object3D (List<Edge> edges, List<Face> faces)
         {
@@ -38,10 +38,17 @@ namespace Blender._3D
 
         private void Buffer (int width, int height)
         {
-            this.buffer = new double[width, height];
-            for (int i = 0; i < width; i++)
-                for (int j = 0; j < height; j++)
-                    buffer[i, j] = int.MinValue;
+            try
+            {
+                this.buffer = new double[width, height];
+                for (int i = 0; i < width; i++)
+                    for (int j = 0; j < height; j++)
+                        buffer[i, j] = int.MinValue;
+            }
+            catch(OutOfMemoryException ex)
+            {
+
+            }
         }
 
         private void Normalizing()
@@ -81,9 +88,9 @@ namespace Blender._3D
             {
                 Edge ex = new Edge();
                 Edge e = edges[i];
-                ex.X = e.X * MA[0, 0] + e.Y * MA[0, 1] + e.Z * MA[0, 3];
-                ex.Y = e.X * MA[1, 0] + e.Y * MA[1, 1] + e.Z * MA[1, 3];
-                ex.Z = e.X * MA[2, 0] + e.Y * MA[2, 1] + e.Z * MA[2, 3];
+                ex.X = e.X * MA[0, 0] + e.Y * MA[0, 1] + e.Z * MA[0, 2] + MA[0, 3];
+                ex.Y = e.X * MA[1, 0] + e.Y * MA[1, 1] + e.Z * MA[1, 2] + MA[1, 3];
+                ex.Z = e.X * MA[2, 0] + e.Y * MA[2, 1] + e.Z * MA[2, 2] + MA[2, 3];
                 this.current.Add(ex);
             }
         }
