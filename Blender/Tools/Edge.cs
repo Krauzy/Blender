@@ -8,7 +8,7 @@ namespace Blender.Tools
 {
     class Edge
     {
-        private Array array;
+        private Arr normal;
         private double x;
         private double y;
         private double z;
@@ -23,6 +23,6 @@ namespace Blender.Tools
         public double X { get => this.x; set => this.x = value; }
         public double Y { get => this.y; set => this.y = value; }
         public double Z { get => this.z; set => this.z = value; }
-        internal Array Array { get => this.array; set => this.array = value; }
+        internal Arr Normal { get => this.normal; set => this.normal = value; }
     }
 }

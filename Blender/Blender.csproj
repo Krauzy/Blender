@@ -56,7 +56,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="3D\Face.cs" />
-    <Compile Include="3D\Object.cs" />
+    <Compile Include="3D\Object3D.cs" />
     <Compile Include="Tools\Arr.cs" />
     <Compile Include="Tools\DMA.cs" />
     <Compile Include="Tools\Edge.cs" />
