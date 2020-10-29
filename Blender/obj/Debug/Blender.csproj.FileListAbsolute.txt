@@ -12,3 +12,4 @@ C:\Users\Trbry\Documents\GitHub\Blender\Blender\obj\Debug\Blender.csproj.CopyCom
 C:\Users\Trbry\Documents\GitHub\Blender\Blender\obj\Debug\Blender.exe
 C:\Users\Trbry\Documents\GitHub\Blender\Blender\obj\Debug\Blender.pdb
 C:\Users\Trbry\Documents\GitHub\Blender\Blender\obj\Debug\Blender.csprojAssemblyReference.cache
+C:\Users\Trbry\Documents\GitHub\Blender\Blender\obj\Debug\Blender.Help.resources

@@ -221,9 +221,9 @@ namespace Blender._3D
             }
         }
 
-        public void Outlook(DMA bitmap, Color color, bool visible)
+        public void Outlook(DMA bitmap, Color color, int look, bool visible)
         {
-            int d = -400;
+            int d = look;
             Edge a, b;
             foreach (Face f in this.faces)
             {

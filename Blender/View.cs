@@ -19,13 +19,25 @@ namespace Blender
 {
     public partial class View : Form
     {
+        public const int XY = 0;
+        public const int XZ = 1;
+        public const int YZ = 2;
+        public const int CAVALEIRA = 3;
+        public const int CABINET = 4;
+        public const int OUTLOOK = 5;
+        //
         private string tabflag;
         private bool move;
         private Point p;
         private Object3D object3D;
         private DMA bitmap;
         private Point mouse;
-
+        private double zoom;
+        private double axisX;
+        private double axisY;
+        private FileInfo info;
+        private int opt;
+        private bool hidden;
         //
 
 
@@ -35,8 +47,12 @@ namespace Blender
             this.Icon = Resources.favico;
             this.tabflag = "Info";
             this.move = false;
-            btProj_Click(btProjAram, new EventArgs());
+            zoom = 1;
+            axisX = 0;
+            axisY = 0;
+            hidden = false;
             btTab_Click(btInfo, new EventArgs());
+            opt = XY;
             this.pic3D.MouseWheel += pic3D_scroll;
         }
 
@@ -45,10 +61,19 @@ namespace Blender
             if (object3D != null)
             {
                 if (e.Delta > 0)
+                {
                     object3D.Scala(1.1, 1.1, 1.1);
+                    zoom += 0.1;
+                }
                 else
+                {
                     object3D.Scala(0.9, 0.9, 0.9);
-                this.LoadImageBox();
+
+                    Console.WriteLine(zoom);
+                    zoom += -0.1;
+                }
+                zoom = Math.Round(zoom, 1, MidpointRounding.AwayFromZero);
+                this.LoadImageBox(opt);
             }
         }
 
@@ -167,17 +192,67 @@ namespace Blender
             this.move = false;
         }
 
-        private void LoadImageBox()
+        private void LoadImageBox(int option, bool hidden = false)
         {
-            if(bitmap != null)
-                bitmap.Dispose();
-            bitmap = new DMA(pic3D.Width, pic3D.Height);
-            object3D.Draw(bitmap, Pallete.BLUE, false, Object3D.XY);
-            pic3D.Image = bitmap.Bitmap;
+            if(object3D != null)
+            {
+                if (bitmap != null)
+                    bitmap.Dispose();
+                txtZoom.Text = zoom.ToString() + "x";
+                txtRotationX.Text = axisX + "°";
+                txtRotationY.Text = axisY + "°";
+                bitmap = new DMA(pic3D.Width, pic3D.Height);
+                switch (option)
+                {
+                    case View.XY:
+                        object3D.Draw(bitmap, Pallete.BLUE, hidden, Object3D.XY);
+                        break;
+
+                    case View.XZ:
+                        object3D.Draw(bitmap, Pallete.BLUE, hidden, Object3D.XZ);
+                        break;
+
+                    case View.YZ:
+                        object3D.Draw(bitmap, Pallete.BLUE, hidden, Object3D.YZ);
+                        break;
+
+                    case View.CAVALEIRA:
+                        object3D.Cavaleira(bitmap, Pallete.BLUE, hidden);
+                        break;
+
+                    case View.CABINET:
+                        object3D.Cabinet(bitmap, Pallete.BLUE, hidden);
+                        break;
+
+                    case View.OUTLOOK:
+                        object3D.Outlook(bitmap, Pallete.BLUE, -Convert.ToInt32(txtDeep.Text), hidden);
+                        break;
+                }
+                pic3D.Image = bitmap.Bitmap;
+            }            
+        }
+
+        private string GetSize(long size)
+        {
+            string[] unit = { "B", "KB", "MB", "GB", "TB" };
+            double d = size;
+            int i = 0;
+            while(d / 1024 > 1)
+            {
+                i++;
+                d = (double)d / 1024;
+            }
+            d = Math.Round(d, 2);
+            return d.ToString() + " " + unit[i];
         }
 
         private void btOpen_Click(object sender, EventArgs e)
         {
+            btProj_Click(btProjAram, new EventArgs());
+            btXY_Click(btXY, new EventArgs());
+            zoom = 1.0;
+            axisX = 0;
+            axisY = 0;
             OpenFileDialog dialog = new OpenFileDialog();
             dialog.Filter = "Objeto 3D|*.obj";
             if(dialog.ShowDialog() == DialogResult.OK)
@@ -190,6 +265,11 @@ namespace Blender
                     string[] split;
                     string row;
                     string[] s;
+                    //
+                    this.info =  new FileInfo(dialog.FileName);
+                    txtFilename.Text = char.ToUpper(info.Name[0]) + info.Name.Substring(1);
+
+                    txtFilesize.Text = this.GetSize(info.Length);
                     while ((row = reader.ReadLine()) != null)
                     {
                         if (row != string.Empty)
@@ -215,8 +295,11 @@ namespace Blender
                             }
                         }
                     }
+                    txtEdge.Text = edges.Count.ToString();
+                    txtFaces.Text = faces.Count.ToString();
                     object3D = new Object3D(edges, faces);
-                    this.LoadImageBox();
+                    opt = XY;
+                    this.LoadImageBox(opt, hidden);
                 }
                 catch(Exception ex)
                 {
@@ -236,7 +319,7 @@ namespace Blender
                         if (e.X != mouse.X || e.Y != mouse.Y)
                         {
                             object3D.Transalation(e.X - mouse.X, e.Y - mouse.Y, 0);
-                            this.LoadImageBox();
+                            this.LoadImageBox(opt, hidden);
                             pic3D.Refresh();
                             this.mouse = e.Location;
                         }
@@ -247,7 +330,9 @@ namespace Blender
                         {
                             object3D.Rotation(e.Y - mouse.Y, Object3D.X_AXIS);
                             object3D.Rotation(e.X - mouse.X, Object3D.Y_AXIS);
-                            this.LoadImageBox();
+                            axisX += e.Y - mouse.Y;
+                            axisY += e.X - mouse.X;
+                            this.LoadImageBox(opt, hidden);
                             pic3D.Refresh();
                             this.mouse = e.Location;
                         }
@@ -259,6 +344,162 @@ namespace Blender
         private void pic3D_MouseDown(object sender, MouseEventArgs e)
         {
             this.mouse = new Point(e.X, e.Y);
+        }
+
+        private void txtFilename_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            this.btOpen_Click(btOpen, new EventArgs());
+        }
+
+        private void btXY_Click(object sender, EventArgs e)
+        {
+            btXY.Font = new Font(btXY.Font, FontStyle.Bold);
+            picXY.Image = Resources.OK;
+            opt = XY;
+            this.LoadImageBox(opt, hidden);
+            btXZ.Font = new Font(btXY.Font, FontStyle.Regular);
+            picXZ.Image = null;
+            btYZ.Font = new Font(btXY.Font, FontStyle.Regular);
+            picYZ.Image = null;
+            btCavaleira.Font = new Font(btXY.Font, FontStyle.Regular);
+            picCav.Image = null;
+            btCab.Font = new Font(btXY.Font, FontStyle.Regular);
+            picCab.Image = null;
+            btPersp.Font = new Font(btXY.Font, FontStyle.Regular);
+            picPersp.Image = null;
+        }
+
+        private void btYZ_Click(object sender, EventArgs e)
+        {
+            btYZ.Font = new Font(btXY.Font, FontStyle.Bold);
+            picYZ.Image = Resources.OK;            
+            opt = YZ;
+            this.LoadImageBox(opt, hidden);
+            btXZ.Font = new Font(btXY.Font, FontStyle.Regular);
+            picXZ.Image = null;
+            btXY.Font = new Font(btXY.Font, FontStyle.Regular);
+            picXY.Image = null;
+            btCavaleira.Font = new Font(btXY.Font, FontStyle.Regular);
+            picCav.Image = null;
+            btCab.Font = new Font(btXY.Font, FontStyle.Regular);
+            picCab.Image = null;
+            btPersp.Font = new Font(btXY.Font, FontStyle.Regular);
+            picPersp.Image = null;
+        }
+
+        private void btXZ_Click(object sender, EventArgs e)
+        {
+            btXZ.Font = new Font(btXY.Font, FontStyle.Bold);
+            picXZ.Image = Resources.OK;
+            opt = XZ;
+            this.LoadImageBox(opt, hidden);
+            btYZ.Font = new Font(btXY.Font, FontStyle.Regular);
+            picYZ.Image = null;
+            btXY.Font = new Font(btXY.Font, FontStyle.Regular);
+            picXY.Image = null;
+            btCavaleira.Font = new Font(btXY.Font, FontStyle.Regular);
+            picCav.Image = null;
+            btCab.Font = new Font(btXY.Font, FontStyle.Regular);
+            picCab.Image = null;
+            btPersp.Font = new Font(btXY.Font, FontStyle.Regular);
+            picPersp.Image = null;
+        }
+
+        private void btCavaleira_Click(object sender, EventArgs e)
+        {
+            btCavaleira.Font = new Font(btXY.Font, FontStyle.Bold);
+            picCav.Image = Resources.OK;
+            opt = CAVALEIRA;
+            this.LoadImageBox(opt, hidden);
+            btYZ.Font = new Font(btXY.Font, FontStyle.Regular);
+            picYZ.Image = null;
+            btXY.Font = new Font(btXY.Font, FontStyle.Regular);
+            picXY.Image = null;
+            btXZ.Font = new Font(btXY.Font, FontStyle.Regular);
+            picXZ.Image = null;
+            btCab.Font = new Font(btXY.Font, FontStyle.Regular);
+            picCab.Image = null;
+            btPersp.Font = new Font(btXY.Font, FontStyle.Regular);
+            picPersp.Image = null;
+        }
+
+        private void btCab_Click(object sender, EventArgs e)
+        {
+            btCab.Font = new Font(btXY.Font, FontStyle.Bold);
+            picCab.Image = Resources.OK;
+            opt = CABINET;
+            this.LoadImageBox(opt, hidden);
+            btYZ.Font = new Font(btXY.Font, FontStyle.Regular);
+            picYZ.Image = null;
+            btXY.Font = new Font(btXY.Font, FontStyle.Regular);
+            picXY.Image = null;
+            btXZ.Font = new Font(btXY.Font, FontStyle.Regular);
+            picXZ.Image = null;
+            btCavaleira.Font = new Font(btXY.Font, FontStyle.Regular);
+            picCav.Image = null;
+            btPersp.Font = new Font(btXY.Font, FontStyle.Regular);
+            picPersp.Image = null;
+        }
+
+        private void btPersp_Click(object sender, EventArgs e)
+        {
+            btPersp.Font = new Font(btXY.Font, FontStyle.Bold);
+            picPersp.Image = Resources.OK;
+            opt = OUTLOOK;
+            this.LoadImageBox(opt, hidden);
+            btYZ.Font = new Font(btXY.Font, FontStyle.Regular);
+            picYZ.Image = null;
+            btXY.Font = new Font(btXY.Font, FontStyle.Regular);
+            picXY.Image = null;
+            btXZ.Font = new Font(btXY.Font, FontStyle.Regular);
+            picXZ.Image = null;
+            btCavaleira.Font = new Font(btXY.Font, FontStyle.Regular);
+            picCav.Image = null;
+            btCab.Font = new Font(btXY.Font, FontStyle.Regular);
+            picCab.Image = null;
+            this.ActiveControl = null;
+        }
+
+        private void btPlus_Click(object sender, EventArgs e)
+        {
+            int deep = Convert.ToInt32(txtDeep.Text);
+            deep += 100;
+            txtDeep.Text = deep.ToString();
+            this.LoadImageBox(opt, hidden);
+            this.ActiveControl = null;
+        }
+
+        private void btMinus_Click(object sender, EventArgs e)
+        {
+            int deep = Convert.ToInt32(txtDeep.Text);
+            if(deep > 0)
+                deep -= 100;
+            txtDeep.Text = deep.ToString();
+            this.LoadImageBox(opt, hidden);
+            this.ActiveControl = null;
+        }
+
+        private void btFOcultas_Click(object sender, EventArgs e)
+        {
+            this.hidden = !hidden;
+            if(hidden)
+            {
+                btFOcultas.Font = new Font(btFOcultas.Font, FontStyle.Bold);
+                picFOcultas.Image = Resources.OK;
+            }
+            else
+            {
+                btFOcultas.Font = new Font(btFOcultas.Font, FontStyle.Regular);
+                picFOcultas.Image = null;
+            }
+            this.ActiveControl = null;
+            this.LoadImageBox(opt, hidden);
+        }
+
+        private void btHelp_Click(object sender, EventArgs e)
+        {
+            Help ex = new Help();
+            ex.ShowDialog();
         }
     }
 }

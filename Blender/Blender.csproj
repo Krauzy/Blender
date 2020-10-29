@@ -57,6 +57,12 @@
   <ItemGroup>
     <Compile Include="3D\Face.cs" />
     <Compile Include="3D\Object3D.cs" />
+    <Compile Include="Help.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Help.Designer.cs">
+      <DependentUpon>Help.cs</DependentUpon>
+    </Compile>
     <Compile Include="Tools\Arr.cs" />
     <Compile Include="Tools\DMA.cs" />
     <Compile Include="Tools\Edge.cs" />
@@ -71,6 +77,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Help.resx">
+      <DependentUpon>Help.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -115,6 +124,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\OK.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mais-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\menos-16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mouse-50.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\mouse_right.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\scroll.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

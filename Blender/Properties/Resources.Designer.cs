@@ -93,6 +93,46 @@ namespace Blender.Properties {
         /// <summary>
         ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap mais_16 {
+            get {
+                object obj = ResourceManager.GetObject("mais-16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap menos_16 {
+            get {
+                object obj = ResourceManager.GetObject("menos-16", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap mouse_50 {
+            get {
+                object obj = ResourceManager.GetObject("mouse-50", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap mouse_right {
+            get {
+                object obj = ResourceManager.GetObject("mouse_right", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap non_inflate_arrow {
             get {
                 object obj = ResourceManager.GetObject("non_inflate_arrow", resourceCulture);
@@ -106,6 +146,16 @@ namespace Blender.Properties {
         internal static System.Drawing.Bitmap OK {
             get {
                 object obj = ResourceManager.GetObject("OK", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Consulta um recurso localizado do tipo System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap scroll {
+            get {
+                object obj = ResourceManager.GetObject("scroll", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

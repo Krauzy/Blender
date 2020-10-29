@@ -117,38 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
-  <data name="aram" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\aram.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="inflate_arrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\inflate-arrow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="mouse-50" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\mouse-50.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="mouse_right" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\mouse_right.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="OK" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\OK.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="mais-16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\mais-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="menos-16" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\menos-16.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="non_inflate_arrow" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\non-inflate-arrow.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="favico" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\favico.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="solid" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\solid.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
-  <data name="scroll" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\scroll.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
-  </data>
 </root>

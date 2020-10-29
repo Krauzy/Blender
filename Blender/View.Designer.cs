@@ -47,28 +47,32 @@
             this.btProjSolid = new System.Windows.Forms.Button();
             this.outerMain = new System.Windows.Forms.Panel();
             this.innerConfig = new System.Windows.Forms.Panel();
-            this.pictureBox8 = new System.Windows.Forms.PictureBox();
-            this.button9 = new System.Windows.Forms.Button();
-            this.pictureBox7 = new System.Windows.Forms.PictureBox();
+            this.btMinus = new System.Windows.Forms.Button();
+            this.txtDeep = new System.Windows.Forms.Label();
+            this.btPlus = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.picFOcultas = new System.Windows.Forms.PictureBox();
+            this.btFOcultas = new System.Windows.Forms.Button();
+            this.picPersp = new System.Windows.Forms.PictureBox();
             this.panel3 = new System.Windows.Forms.Panel();
             this.button2 = new System.Windows.Forms.Button();
             this.label9 = new System.Windows.Forms.Label();
             this.panel5 = new System.Windows.Forms.Panel();
-            this.pictureBox6 = new System.Windows.Forms.PictureBox();
-            this.button7 = new System.Windows.Forms.Button();
-            this.pictureBox5 = new System.Windows.Forms.PictureBox();
-            this.button6 = new System.Windows.Forms.Button();
-            this.button8 = new System.Windows.Forms.Button();
+            this.picCab = new System.Windows.Forms.PictureBox();
+            this.btCab = new System.Windows.Forms.Button();
+            this.picCav = new System.Windows.Forms.PictureBox();
+            this.btCavaleira = new System.Windows.Forms.Button();
+            this.btPersp = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.pictureBox4 = new System.Windows.Forms.PictureBox();
-            this.pictureBox3 = new System.Windows.Forms.PictureBox();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.button5 = new System.Windows.Forms.Button();
-            this.button4 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.picXZ = new System.Windows.Forms.PictureBox();
+            this.picYZ = new System.Windows.Forms.PictureBox();
+            this.picXY = new System.Windows.Forms.PictureBox();
+            this.btXZ = new System.Windows.Forms.Button();
+            this.btYZ = new System.Windows.Forms.Button();
+            this.btXY = new System.Windows.Forms.Button();
             this.innerSolid = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.button18 = new System.Windows.Forms.Button();
@@ -102,9 +106,19 @@
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button10 = new System.Windows.Forms.Button();
             this.innerInfo = new System.Windows.Forms.Panel();
+            this.txtFilename = new System.Windows.Forms.LinkLabel();
+            this.txtRotationY = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.txtFaces = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
+            this.txtRotationX = new System.Windows.Forms.Label();
+            this.label21 = new System.Windows.Forms.Label();
+            this.txtZoom = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.txtEdge = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
+            this.txtFilesize = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btInfo = new System.Windows.Forms.Button();
             this.btConfig = new System.Windows.Forms.Button();
@@ -118,17 +132,17 @@
             ((System.ComponentModel.ISupportInitialize)(this.picSolid)).BeginInit();
             this.outerMain.SuspendLayout();
             this.innerConfig.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picFOcultas)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picPersp)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picCab)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picCav)).BeginInit();
             this.panel1.SuspendLayout();
             this.panel4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picXZ)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picYZ)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picXY)).BeginInit();
             this.innerSolid.SuspendLayout();
             this.panel8.SuspendLayout();
             this.panel9.SuspendLayout();
@@ -251,6 +265,7 @@
             this.btHelp.TabIndex = 6;
             this.btHelp.Text = "?";
             this.btHelp.UseVisualStyleBackColor = false;
+            this.btHelp.Click += new System.EventHandler(this.btHelp_Click);
             // 
             // outerProj
             // 
@@ -373,53 +388,112 @@
             // innerConfig
             // 
             this.innerConfig.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.innerConfig.Controls.Add(this.pictureBox8);
-            this.innerConfig.Controls.Add(this.button9);
-            this.innerConfig.Controls.Add(this.pictureBox7);
+            this.innerConfig.Controls.Add(this.btMinus);
+            this.innerConfig.Controls.Add(this.txtDeep);
+            this.innerConfig.Controls.Add(this.btPlus);
+            this.innerConfig.Controls.Add(this.label5);
+            this.innerConfig.Controls.Add(this.picFOcultas);
+            this.innerConfig.Controls.Add(this.btFOcultas);
+            this.innerConfig.Controls.Add(this.picPersp);
             this.innerConfig.Controls.Add(this.panel3);
-            this.innerConfig.Controls.Add(this.button8);
+            this.innerConfig.Controls.Add(this.btPersp);
             this.innerConfig.Controls.Add(this.panel1);
             this.innerConfig.Location = new System.Drawing.Point(3, 4);
             this.innerConfig.Name = "innerConfig";
             this.innerConfig.Size = new System.Drawing.Size(404, 334);
             this.innerConfig.TabIndex = 12;
             // 
-            // pictureBox8
+            // btMinus
             // 
-            this.pictureBox8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.pictureBox8.Location = new System.Drawing.Point(341, 228);
-            this.pictureBox8.Name = "pictureBox8";
-            this.pictureBox8.Size = new System.Drawing.Size(30, 30);
-            this.pictureBox8.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox8.TabIndex = 10;
-            this.pictureBox8.TabStop = false;
+            this.btMinus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btMinus.FlatAppearance.BorderSize = 0;
+            this.btMinus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btMinus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btMinus.ForeColor = System.Drawing.Color.White;
+            this.btMinus.Image = global::Blender.Properties.Resources.menos_16;
+            this.btMinus.Location = new System.Drawing.Point(256, 294);
+            this.btMinus.Name = "btMinus";
+            this.btMinus.Size = new System.Drawing.Size(25, 25);
+            this.btMinus.TabIndex = 14;
+            this.btMinus.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btMinus.UseVisualStyleBackColor = false;
+            this.btMinus.Click += new System.EventHandler(this.btMinus_Click);
             // 
-            // button9
+            // txtDeep
             // 
-            this.button9.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.button9.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.button9.FlatAppearance.BorderSize = 3;
-            this.button9.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.button9.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button9.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button9.ForeColor = System.Drawing.Color.White;
-            this.button9.Location = new System.Drawing.Point(211, 219);
-            this.button9.Name = "button9";
-            this.button9.Size = new System.Drawing.Size(184, 48);
-            this.button9.TabIndex = 9;
-            this.button9.Text = "     F. Ocultas";
-            this.button9.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button9.UseVisualStyleBackColor = false;
+            this.txtDeep.AutoSize = true;
+            this.txtDeep.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtDeep.ForeColor = System.Drawing.Color.White;
+            this.txtDeep.Location = new System.Drawing.Point(224, 298);
+            this.txtDeep.Name = "txtDeep";
+            this.txtDeep.Size = new System.Drawing.Size(29, 17);
+            this.txtDeep.TabIndex = 13;
+            this.txtDeep.Text = "400";
             // 
-            // pictureBox7
+            // btPlus
             // 
-            this.pictureBox7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.pictureBox7.Location = new System.Drawing.Point(140, 228);
-            this.pictureBox7.Name = "pictureBox7";
-            this.pictureBox7.Size = new System.Drawing.Size(30, 30);
-            this.pictureBox7.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox7.TabIndex = 8;
-            this.pictureBox7.TabStop = false;
+            this.btPlus.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btPlus.FlatAppearance.BorderSize = 0;
+            this.btPlus.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btPlus.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btPlus.ForeColor = System.Drawing.Color.White;
+            this.btPlus.Image = global::Blender.Properties.Resources.mais_16;
+            this.btPlus.Location = new System.Drawing.Point(197, 294);
+            this.btPlus.Name = "btPlus";
+            this.btPlus.Size = new System.Drawing.Size(25, 25);
+            this.btPlus.TabIndex = 12;
+            this.btPlus.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.btPlus.UseVisualStyleBackColor = false;
+            this.btPlus.Click += new System.EventHandler(this.btPlus_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.ForeColor = System.Drawing.Color.White;
+            this.label5.Location = new System.Drawing.Point(94, 298);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(100, 17);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Profundidade:";
+            // 
+            // picFOcultas
+            // 
+            this.picFOcultas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.picFOcultas.Location = new System.Drawing.Point(341, 228);
+            this.picFOcultas.Name = "picFOcultas";
+            this.picFOcultas.Size = new System.Drawing.Size(30, 30);
+            this.picFOcultas.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picFOcultas.TabIndex = 10;
+            this.picFOcultas.TabStop = false;
+            // 
+            // btFOcultas
+            // 
+            this.btFOcultas.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.btFOcultas.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btFOcultas.FlatAppearance.BorderSize = 3;
+            this.btFOcultas.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.btFOcultas.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btFOcultas.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btFOcultas.ForeColor = System.Drawing.Color.White;
+            this.btFOcultas.Location = new System.Drawing.Point(211, 219);
+            this.btFOcultas.Name = "btFOcultas";
+            this.btFOcultas.Size = new System.Drawing.Size(184, 48);
+            this.btFOcultas.TabIndex = 9;
+            this.btFOcultas.Text = "     F. Ocultas";
+            this.btFOcultas.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btFOcultas.UseVisualStyleBackColor = false;
+            this.btFOcultas.Click += new System.EventHandler(this.btFOcultas_Click);
+            // 
+            // picPersp
+            // 
+            this.picPersp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.picPersp.Location = new System.Drawing.Point(140, 228);
+            this.picPersp.Name = "picPersp";
+            this.picPersp.Size = new System.Drawing.Size(30, 30);
+            this.picPersp.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picPersp.TabIndex = 8;
+            this.picPersp.TabStop = false;
             // 
             // panel3
             // 
@@ -460,83 +534,86 @@
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel5.Controls.Add(this.pictureBox6);
-            this.panel5.Controls.Add(this.button7);
-            this.panel5.Controls.Add(this.pictureBox5);
-            this.panel5.Controls.Add(this.button6);
+            this.panel5.Controls.Add(this.picCab);
+            this.panel5.Controls.Add(this.btCab);
+            this.panel5.Controls.Add(this.picCav);
+            this.panel5.Controls.Add(this.btCavaleira);
             this.panel5.Location = new System.Drawing.Point(3, 30);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(178, 96);
             this.panel5.TabIndex = 1;
             // 
-            // pictureBox6
+            // picCab
             // 
-            this.pictureBox6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.pictureBox6.Location = new System.Drawing.Point(128, 59);
-            this.pictureBox6.Name = "pictureBox6";
-            this.pictureBox6.Size = new System.Drawing.Size(30, 30);
-            this.pictureBox6.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox6.TabIndex = 10;
-            this.pictureBox6.TabStop = false;
+            this.picCab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.picCab.Location = new System.Drawing.Point(128, 59);
+            this.picCab.Name = "picCab";
+            this.picCab.Size = new System.Drawing.Size(30, 30);
+            this.picCab.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picCab.TabIndex = 10;
+            this.picCab.TabStop = false;
             // 
-            // button7
+            // btCab
             // 
-            this.button7.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.button7.FlatAppearance.BorderSize = 0;
-            this.button7.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.button7.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button7.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button7.ForeColor = System.Drawing.Color.White;
-            this.button7.Location = new System.Drawing.Point(0, 48);
-            this.button7.Name = "button7";
-            this.button7.Size = new System.Drawing.Size(178, 48);
-            this.button7.TabIndex = 9;
-            this.button7.Text = "     Cabinet";
-            this.button7.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button7.UseVisualStyleBackColor = false;
+            this.btCab.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.btCab.FlatAppearance.BorderSize = 0;
+            this.btCab.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.btCab.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btCab.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btCab.ForeColor = System.Drawing.Color.White;
+            this.btCab.Location = new System.Drawing.Point(0, 48);
+            this.btCab.Name = "btCab";
+            this.btCab.Size = new System.Drawing.Size(178, 48);
+            this.btCab.TabIndex = 9;
+            this.btCab.Text = "     Cabinet";
+            this.btCab.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btCab.UseVisualStyleBackColor = false;
+            this.btCab.Click += new System.EventHandler(this.btCab_Click);
             // 
-            // pictureBox5
+            // picCav
             // 
-            this.pictureBox5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.pictureBox5.Location = new System.Drawing.Point(128, 11);
-            this.pictureBox5.Name = "pictureBox5";
-            this.pictureBox5.Size = new System.Drawing.Size(30, 30);
-            this.pictureBox5.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox5.TabIndex = 8;
-            this.pictureBox5.TabStop = false;
+            this.picCav.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.picCav.Location = new System.Drawing.Point(128, 11);
+            this.picCav.Name = "picCav";
+            this.picCav.Size = new System.Drawing.Size(30, 30);
+            this.picCav.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picCav.TabIndex = 8;
+            this.picCav.TabStop = false;
             // 
-            // button6
+            // btCavaleira
             // 
-            this.button6.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.button6.FlatAppearance.BorderSize = 0;
-            this.button6.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.button6.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button6.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button6.ForeColor = System.Drawing.Color.White;
-            this.button6.Location = new System.Drawing.Point(0, 0);
-            this.button6.Name = "button6";
-            this.button6.Size = new System.Drawing.Size(178, 48);
-            this.button6.TabIndex = 7;
-            this.button6.Text = "    Cavaleira";
-            this.button6.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button6.UseVisualStyleBackColor = false;
+            this.btCavaleira.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.btCavaleira.FlatAppearance.BorderSize = 0;
+            this.btCavaleira.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.btCavaleira.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btCavaleira.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btCavaleira.ForeColor = System.Drawing.Color.White;
+            this.btCavaleira.Location = new System.Drawing.Point(0, 0);
+            this.btCavaleira.Name = "btCavaleira";
+            this.btCavaleira.Size = new System.Drawing.Size(178, 48);
+            this.btCavaleira.TabIndex = 7;
+            this.btCavaleira.Text = "    Cavaleira";
+            this.btCavaleira.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btCavaleira.UseVisualStyleBackColor = false;
+            this.btCavaleira.Click += new System.EventHandler(this.btCavaleira_Click);
             // 
-            // button8
+            // btPersp
             // 
-            this.button8.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.button8.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
-            this.button8.FlatAppearance.BorderSize = 3;
-            this.button8.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.button8.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button8.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button8.ForeColor = System.Drawing.Color.White;
-            this.button8.Location = new System.Drawing.Point(10, 219);
-            this.button8.Name = "button8";
-            this.button8.Size = new System.Drawing.Size(184, 48);
-            this.button8.TabIndex = 7;
-            this.button8.Text = "   Perspectiva";
-            this.button8.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button8.UseVisualStyleBackColor = false;
+            this.btPersp.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.btPersp.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.btPersp.FlatAppearance.BorderSize = 3;
+            this.btPersp.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.btPersp.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btPersp.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btPersp.ForeColor = System.Drawing.Color.White;
+            this.btPersp.Location = new System.Drawing.Point(10, 219);
+            this.btPersp.Name = "btPersp";
+            this.btPersp.Size = new System.Drawing.Size(184, 48);
+            this.btPersp.TabIndex = 7;
+            this.btPersp.Text = "   Perspectiva";
+            this.btPersp.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btPersp.UseVisualStyleBackColor = false;
+            this.btPersp.Click += new System.EventHandler(this.btPersp_Click);
             // 
             // panel1
             // 
@@ -577,94 +654,97 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.panel4.Controls.Add(this.pictureBox4);
-            this.panel4.Controls.Add(this.pictureBox3);
-            this.panel4.Controls.Add(this.pictureBox2);
-            this.panel4.Controls.Add(this.button5);
-            this.panel4.Controls.Add(this.button4);
-            this.panel4.Controls.Add(this.button3);
+            this.panel4.Controls.Add(this.picXZ);
+            this.panel4.Controls.Add(this.picYZ);
+            this.panel4.Controls.Add(this.picXY);
+            this.panel4.Controls.Add(this.btXZ);
+            this.panel4.Controls.Add(this.btYZ);
+            this.panel4.Controls.Add(this.btXY);
             this.panel4.Location = new System.Drawing.Point(3, 30);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(178, 144);
             this.panel4.TabIndex = 1;
             // 
-            // pictureBox4
+            // picXZ
             // 
-            this.pictureBox4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.pictureBox4.Location = new System.Drawing.Point(128, 104);
-            this.pictureBox4.Name = "pictureBox4";
-            this.pictureBox4.Size = new System.Drawing.Size(30, 30);
-            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox4.TabIndex = 6;
-            this.pictureBox4.TabStop = false;
+            this.picXZ.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.picXZ.Location = new System.Drawing.Point(128, 104);
+            this.picXZ.Name = "picXZ";
+            this.picXZ.Size = new System.Drawing.Size(30, 30);
+            this.picXZ.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picXZ.TabIndex = 6;
+            this.picXZ.TabStop = false;
             // 
-            // pictureBox3
+            // picYZ
             // 
-            this.pictureBox3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.pictureBox3.Location = new System.Drawing.Point(128, 57);
-            this.pictureBox3.Name = "pictureBox3";
-            this.pictureBox3.Size = new System.Drawing.Size(30, 30);
-            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox3.TabIndex = 5;
-            this.pictureBox3.TabStop = false;
+            this.picYZ.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.picYZ.Location = new System.Drawing.Point(128, 57);
+            this.picYZ.Name = "picYZ";
+            this.picYZ.Size = new System.Drawing.Size(30, 30);
+            this.picYZ.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picYZ.TabIndex = 5;
+            this.picYZ.TabStop = false;
             // 
-            // pictureBox2
+            // picXY
             // 
-            this.pictureBox2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
-            this.pictureBox2.Location = new System.Drawing.Point(128, 9);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(30, 30);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
-            this.pictureBox2.TabIndex = 4;
-            this.pictureBox2.TabStop = false;
+            this.picXY.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.picXY.Location = new System.Drawing.Point(128, 9);
+            this.picXY.Name = "picXY";
+            this.picXY.Size = new System.Drawing.Size(30, 30);
+            this.picXY.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.picXY.TabIndex = 4;
+            this.picXY.TabStop = false;
             // 
-            // button5
+            // btXZ
             // 
-            this.button5.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.button5.FlatAppearance.BorderSize = 0;
-            this.button5.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.button5.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button5.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button5.ForeColor = System.Drawing.Color.White;
-            this.button5.Location = new System.Drawing.Point(0, 96);
-            this.button5.Name = "button5";
-            this.button5.Size = new System.Drawing.Size(178, 48);
-            this.button5.TabIndex = 2;
-            this.button5.Text = "           X, Z";
-            this.button5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button5.UseVisualStyleBackColor = false;
+            this.btXZ.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.btXZ.FlatAppearance.BorderSize = 0;
+            this.btXZ.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.btXZ.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btXZ.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btXZ.ForeColor = System.Drawing.Color.White;
+            this.btXZ.Location = new System.Drawing.Point(0, 96);
+            this.btXZ.Name = "btXZ";
+            this.btXZ.Size = new System.Drawing.Size(178, 48);
+            this.btXZ.TabIndex = 2;
+            this.btXZ.Text = "           X, Z";
+            this.btXZ.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btXZ.UseVisualStyleBackColor = false;
+            this.btXZ.Click += new System.EventHandler(this.btXZ_Click);
             // 
-            // button4
+            // btYZ
             // 
-            this.button4.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.button4.FlatAppearance.BorderSize = 0;
-            this.button4.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button4.ForeColor = System.Drawing.Color.White;
-            this.button4.Location = new System.Drawing.Point(0, 48);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(178, 48);
-            this.button4.TabIndex = 1;
-            this.button4.Text = "           Y, Z";
-            this.button4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button4.UseVisualStyleBackColor = false;
+            this.btYZ.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.btYZ.FlatAppearance.BorderSize = 0;
+            this.btYZ.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.btYZ.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btYZ.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btYZ.ForeColor = System.Drawing.Color.White;
+            this.btYZ.Location = new System.Drawing.Point(0, 48);
+            this.btYZ.Name = "btYZ";
+            this.btYZ.Size = new System.Drawing.Size(178, 48);
+            this.btYZ.TabIndex = 1;
+            this.btYZ.Text = "           Y, Z";
+            this.btYZ.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btYZ.UseVisualStyleBackColor = false;
+            this.btYZ.Click += new System.EventHandler(this.btYZ_Click);
             // 
-            // button3
+            // btXY
             // 
-            this.button3.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.button3.FlatAppearance.BorderSize = 0;
-            this.button3.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
-            this.button3.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button3.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button3.ForeColor = System.Drawing.Color.White;
-            this.button3.Location = new System.Drawing.Point(0, 0);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(178, 48);
-            this.button3.TabIndex = 0;
-            this.button3.Text = "           X, Y";
-            this.button3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.button3.UseVisualStyleBackColor = false;
+            this.btXY.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.btXY.FlatAppearance.BorderSize = 0;
+            this.btXY.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.btXY.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btXY.Font = new System.Drawing.Font("Century Gothic", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btXY.ForeColor = System.Drawing.Color.White;
+            this.btXY.Location = new System.Drawing.Point(0, 0);
+            this.btXY.Name = "btXY";
+            this.btXY.Size = new System.Drawing.Size(178, 48);
+            this.btXY.TabIndex = 0;
+            this.btXY.Text = "           X, Y";
+            this.btXY.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btXY.UseVisualStyleBackColor = false;
+            this.btXY.Click += new System.EventHandler(this.btXY_Click);
             // 
             // innerSolid
             // 
@@ -1078,25 +1158,159 @@
             // innerInfo
             // 
             this.innerInfo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.innerInfo.Controls.Add(this.txtFilename);
+            this.innerInfo.Controls.Add(this.txtRotationY);
+            this.innerInfo.Controls.Add(this.label18);
+            this.innerInfo.Controls.Add(this.txtFaces);
+            this.innerInfo.Controls.Add(this.label23);
+            this.innerInfo.Controls.Add(this.txtRotationX);
+            this.innerInfo.Controls.Add(this.label21);
+            this.innerInfo.Controls.Add(this.txtZoom);
+            this.innerInfo.Controls.Add(this.label19);
+            this.innerInfo.Controls.Add(this.txtEdge);
             this.innerInfo.Controls.Add(this.label6);
+            this.innerInfo.Controls.Add(this.txtFilesize);
             this.innerInfo.Controls.Add(this.label7);
-            this.innerInfo.Controls.Add(this.label5);
             this.innerInfo.Controls.Add(this.label4);
             this.innerInfo.Location = new System.Drawing.Point(3, 4);
             this.innerInfo.Name = "innerInfo";
             this.innerInfo.Size = new System.Drawing.Size(404, 334);
             this.innerInfo.TabIndex = 1;
             // 
+            // txtFilename
+            // 
+            this.txtFilename.ActiveLinkColor = System.Drawing.Color.White;
+            this.txtFilename.AutoSize = true;
+            this.txtFilename.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFilename.LinkColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
+            this.txtFilename.Location = new System.Drawing.Point(208, 26);
+            this.txtFilename.Name = "txtFilename";
+            this.txtFilename.Size = new System.Drawing.Size(14, 20);
+            this.txtFilename.TabIndex = 14;
+            this.txtFilename.TabStop = true;
+            this.txtFilename.Text = "-";
+            this.txtFilename.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.txtFilename_LinkClicked);
+            // 
+            // txtRotationY
+            // 
+            this.txtRotationY.AutoSize = true;
+            this.txtRotationY.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRotationY.ForeColor = System.Drawing.Color.White;
+            this.txtRotationY.Location = new System.Drawing.Point(211, 218);
+            this.txtRotationY.Name = "txtRotationY";
+            this.txtRotationY.Size = new System.Drawing.Size(14, 20);
+            this.txtRotationY.TabIndex = 13;
+            this.txtRotationY.Text = "-";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label18.ForeColor = System.Drawing.Color.White;
+            this.label18.Location = new System.Drawing.Point(81, 216);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(121, 20);
+            this.label18.TabIndex = 12;
+            this.label18.Text = "Rotação Eixo-Y:";
+            // 
+            // txtFaces
+            // 
+            this.txtFaces.AutoSize = true;
+            this.txtFaces.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFaces.ForeColor = System.Drawing.Color.White;
+            this.txtFaces.Location = new System.Drawing.Point(210, 122);
+            this.txtFaces.Name = "txtFaces";
+            this.txtFaces.Size = new System.Drawing.Size(14, 20);
+            this.txtFaces.TabIndex = 11;
+            this.txtFaces.Text = "-";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label23.ForeColor = System.Drawing.Color.White;
+            this.label23.Location = new System.Drawing.Point(146, 122);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(56, 20);
+            this.label23.TabIndex = 10;
+            this.label23.Text = "Faces:";
+            // 
+            // txtRotationX
+            // 
+            this.txtRotationX.AutoSize = true;
+            this.txtRotationX.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtRotationX.ForeColor = System.Drawing.Color.White;
+            this.txtRotationX.Location = new System.Drawing.Point(211, 186);
+            this.txtRotationX.Name = "txtRotationX";
+            this.txtRotationX.Size = new System.Drawing.Size(14, 20);
+            this.txtRotationX.TabIndex = 9;
+            this.txtRotationX.Text = "-";
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label21.ForeColor = System.Drawing.Color.White;
+            this.label21.Location = new System.Drawing.Point(79, 187);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(123, 20);
+            this.label21.TabIndex = 8;
+            this.label21.Text = "Rotação Eixo-X:";
+            // 
+            // txtZoom
+            // 
+            this.txtZoom.AutoSize = true;
+            this.txtZoom.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtZoom.ForeColor = System.Drawing.Color.White;
+            this.txtZoom.Location = new System.Drawing.Point(210, 154);
+            this.txtZoom.Name = "txtZoom";
+            this.txtZoom.Size = new System.Drawing.Size(14, 20);
+            this.txtZoom.TabIndex = 7;
+            this.txtZoom.Text = "-";
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label19.ForeColor = System.Drawing.Color.White;
+            this.label19.Location = new System.Drawing.Point(149, 154);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(53, 20);
+            this.label19.TabIndex = 6;
+            this.label19.Text = "Zoom:";
+            // 
+            // txtEdge
+            // 
+            this.txtEdge.AutoSize = true;
+            this.txtEdge.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtEdge.ForeColor = System.Drawing.Color.White;
+            this.txtEdge.Location = new System.Drawing.Point(210, 89);
+            this.txtEdge.Name = "txtEdge";
+            this.txtEdge.Size = new System.Drawing.Size(14, 20);
+            this.txtEdge.TabIndex = 5;
+            this.txtEdge.Text = "-";
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label6.ForeColor = System.Drawing.Color.White;
-            this.label6.Location = new System.Drawing.Point(210, 57);
+            this.label6.Location = new System.Drawing.Point(129, 89);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(14, 20);
-            this.label6.TabIndex = 3;
-            this.label6.Text = "-";
+            this.label6.Size = new System.Drawing.Size(73, 20);
+            this.label6.TabIndex = 4;
+            this.label6.Text = "Vértices:";
+            // 
+            // txtFilesize
+            // 
+            this.txtFilesize.AutoSize = true;
+            this.txtFilesize.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtFilesize.ForeColor = System.Drawing.Color.White;
+            this.txtFilesize.Location = new System.Drawing.Point(210, 57);
+            this.txtFilesize.Name = "txtFilesize";
+            this.txtFilesize.Size = new System.Drawing.Size(14, 20);
+            this.txtFilesize.TabIndex = 3;
+            this.txtFilesize.Text = "-";
             // 
             // label7
             // 
@@ -1108,17 +1322,6 @@
             this.label7.Size = new System.Drawing.Size(79, 20);
             this.label7.TabIndex = 2;
             this.label7.Text = "Tamanho:";
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Century Gothic", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.ForeColor = System.Drawing.Color.White;
-            this.label5.Location = new System.Drawing.Point(208, 27);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(14, 20);
-            this.label5.TabIndex = 1;
-            this.label5.Text = "-";
             // 
             // label4
             // 
@@ -1225,19 +1428,20 @@
             ((System.ComponentModel.ISupportInitialize)(this.picSolid)).EndInit();
             this.outerMain.ResumeLayout(false);
             this.innerConfig.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox8)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox7)).EndInit();
+            this.innerConfig.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picFOcultas)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picPersp)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel5.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox5)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picCab)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picCav)).EndInit();
             this.panel1.ResumeLayout(false);
             this.panel1.PerformLayout();
             this.panel4.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picXZ)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picYZ)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.picXY)).EndInit();
             this.innerSolid.ResumeLayout(false);
             this.panel8.ResumeLayout(false);
             this.panel8.PerformLayout();
@@ -1289,9 +1493,8 @@
         private System.Windows.Forms.Panel innerConfig;
         private System.Windows.Forms.Button btOpen;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label txtFilesize;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Label label9;
@@ -1300,20 +1503,20 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel panel4;
-        private System.Windows.Forms.PictureBox pictureBox2;
-        private System.Windows.Forms.Button button5;
-        private System.Windows.Forms.Button button4;
-        private System.Windows.Forms.Button button3;
-        private System.Windows.Forms.PictureBox pictureBox4;
-        private System.Windows.Forms.PictureBox pictureBox3;
-        private System.Windows.Forms.PictureBox pictureBox7;
-        private System.Windows.Forms.PictureBox pictureBox6;
-        private System.Windows.Forms.Button button7;
-        private System.Windows.Forms.PictureBox pictureBox5;
-        private System.Windows.Forms.Button button6;
-        private System.Windows.Forms.Button button8;
-        private System.Windows.Forms.PictureBox pictureBox8;
-        private System.Windows.Forms.Button button9;
+        private System.Windows.Forms.PictureBox picXY;
+        private System.Windows.Forms.Button btXZ;
+        private System.Windows.Forms.Button btYZ;
+        private System.Windows.Forms.Button btXY;
+        private System.Windows.Forms.PictureBox picXZ;
+        private System.Windows.Forms.PictureBox picYZ;
+        private System.Windows.Forms.PictureBox picPersp;
+        private System.Windows.Forms.PictureBox picCab;
+        private System.Windows.Forms.Button btCab;
+        private System.Windows.Forms.PictureBox picCav;
+        private System.Windows.Forms.Button btCavaleira;
+        private System.Windows.Forms.Button btPersp;
+        private System.Windows.Forms.PictureBox picFOcultas;
+        private System.Windows.Forms.Button btFOcultas;
         private System.Windows.Forms.Panel innerSolid;
         private System.Windows.Forms.PictureBox pictureBox9;
         private System.Windows.Forms.Button button11;
@@ -1346,6 +1549,21 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.TrackBar trackBar2;
         private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.Label txtEdge;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label txtRotationX;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label txtZoom;
+        private System.Windows.Forms.Label label19;
+        private System.Windows.Forms.Label txtFaces;
+        private System.Windows.Forms.Label label23;
+        private System.Windows.Forms.Label txtRotationY;
+        private System.Windows.Forms.Label label18;
+        private System.Windows.Forms.LinkLabel txtFilename;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btPlus;
+        private System.Windows.Forms.Button btMinus;
+        private System.Windows.Forms.Label txtDeep;
     }
 }
 
