@@ -101,8 +101,8 @@ namespace Blender._3D
             if (this.Resolve(edges))
             {
                 // variáveis
-                int cx = 425;
-                int cy = 375;
+                int cx = 286;
+                int cy = 296;
                 Edge max = this.Max(edges),
                 min = this.Min(edges),
                 h = new Edge(),
@@ -110,7 +110,7 @@ namespace Blender._3D
                 ld = new Edge(0.5, 0.5, 0.5),
                 le = new Edge(0.5, 0.5, 0.5),
                 ka = new Edge(1, 0.9, 0.9),
-                kd = new Edge(color.R / 255, color.G / 255, color.B / 255),
+                kd = new Edge((double)color.R / 255, (double)color.G / 255, (double)color.B / 255),
                 ke = new Edge(0.5, 0.5, 0.5);
                 int exp = 10;
                 double dif, esp;
@@ -161,11 +161,11 @@ namespace Blender._3D
                     double dy = ma.Y - mi.Y;
                     double dz = ma.Z - mi.Z;
                     double incx = dy == 0 ? 0 : dx / dy;
-                    ET[index].Add(new ET((int)ma.Y + cy, (int)mi.Y + cy, (int)mi.X + cx,
+                    ET[index].Add(new ET((int)ma.Y + cy, (int)mi.Y + cy, mi.X + cx,
                         incx, 1, 1, 1, mi.Z, 1, 1, 1, dy == 0 ? 0 : dz / dy));
                 }
-                double mod = Math.Sqrt(Methods.Squared(light.X) + Methods.Squared(light.Y) + Methods.Squared(light.Z));
-                light.Z /= mod;
+                double mod = Math.Sqrt(Math.Pow(light.X, 2) + Math.Pow(light.Y, 2) + Math.Pow(light.Z, 2));
+                light.X /= mod;
                 light.Y /= mod;
                 light.Z /= mod;
                 h.X = light.X + look.X;
@@ -204,30 +204,17 @@ namespace Blender._3D
                             double dx = x2 - x1;
                             double incZ = (AET[j + 1].ZMin - AET[j].ZMin) / dx;
                             double z = AET[j].ZMin;
-                            double r = AET[j].RMin;
-                            double g = AET[j].GMin;
-                            double b = AET[j].BMin;
-                            double incR = (AET[j + 1].RMin - AET[j].RMin) / dx;
-                            double incG = (AET[j + 1].GMin - AET[j].GMin) / dx;
-                            double incB = (AET[j + 1].BMin - AET[j].BMin) / dx;
                             while (x1++ <= x2)
                             {
                                 if (y < bitmap.Height && y >= 0 && x1 < bitmap.Width && x1 >= 0 && z > buffer[x1, y])
                                 {
-                                    dif = light.Z * r + light.Y * g + light.Z * b;
-                                    esp = Math.Pow(h.X * r + h.Y * g + h.Z * b, exp);
-                                    color = Color.FromArgb(
-                                        (int)(Math.Abs(la.X * ka.X + ld.X * kd.X * dif + le.X * ke.X * esp) * 255),
-                                        (int)(Math.Abs(la.Y * ka.Y + ld.Y * kd.Y * dif + le.Y * ke.Y * esp) * 255),
-                                        (int)(Math.Abs(la.Z * ka.Z + ld.Z * kd.Z * dif + le.Z * ke.Z * esp) * 255)
-                                    );
                                     bitmap.SetPixel(x1, y, color);
                                     buffer[x1, y] = z;
                                 }
                                 z += incZ;
-                                r += incR;
-                                g += incG;
-                                b += incB;
+                                //r += incR;
+                                //g += incG;
+                                //b += incB;
                             }
                         }
                         foreach (ET node in AET)
@@ -246,8 +233,8 @@ namespace Blender._3D
             if (this.Resolve(edges))
             {
                 // variáveis
-                int cx = 425;
-                int cy = 375;
+                int cx = 286;
+                int cy = 296;
                 List<Color> colors = new List<Color>();
                 Edge max = this.Max(edges),
                 min = this.Min(edges),
@@ -255,22 +242,22 @@ namespace Blender._3D
                 la = new Edge(0.1, 0.1, 0.1),
                 ld = new Edge(0.5, 0.5, 0.5),
                 le = new Edge(0.5, 0.5, 0.5),
-                ka = new Edge(1, 0.9, 0.9),
-                kd = new Edge(color.R / 255, color.G / 255, color.B / 255),
+                ka = new Edge(0.9, 0.9, 0.9),
+                kd = new Edge((double)color.R / 255, (double)color.G / 255, (double)color.B / 255),
                 ke = new Edge(0.5, 0.5, 0.5);
                 int exp = 10;
                 double dif, esp;
                 int values = bitmap.Height;
                 List<ET>[] ET = new List<ET>[values];
                 int i;
-                double mod = Math.Sqrt(Methods.Squared(light.X) + Methods.Squared(light.Y) + Methods.Squared(light.Z));
-                light.Z /= mod;
+                double mod = Math.Sqrt(Math.Pow(light.X, 2) + Math.Pow(light.Y, 2) + Math.Pow(light.Z, 2));
+                light.X /= mod;
                 light.Y /= mod;
                 light.Z /= mod;
                 h.X = light.X + look.X;
                 h.Y = light.Y + look.Y;
                 h.Z = light.Z + look.Z;
-                mod = Math.Sqrt(Methods.Squared(h.X) + Methods.Squared(h.Y) + Methods.Squared(h.Z));
+                mod = Math.Sqrt(Math.Pow(h.X, 2) + Math.Pow(h.Y, 2) + Math.Pow(h.Z, 2));
                 h.X /= mod;
                 h.Y /= mod;
                 h.Z /= mod;
@@ -283,6 +270,7 @@ namespace Blender._3D
                             (int)(Math.Abs(la.X * ka.X + ld.X * kd.X * dif + le.X * ke.X * esp) * 255),
                             (int)(Math.Abs(la.Y * ka.Y + ld.Y * kd.Y * dif + le.Y * ke.Y * esp) * 255),
                             (int)(Math.Abs(la.Z * ka.Z + ld.Z * kd.Z * dif + le.Z * ke.Z * esp) * 255)));
+                    //Console.WriteLine((Math.Abs(la.X * ka.X + ld.X * kd.X * dif + le.X * ke.X * esp) * 255) + " | " + (Math.Abs(la.Y * ka.Y + ld.Y * kd.Y * dif + le.Y * ke.Y * esp) * 255) +  " | " + (Math.Abs(la.Z * ka.Z + ld.Z * kd.Z * dif + le.Z * ke.Z * esp) * 255));
                 }
                 int idMax;
                 int idMin;
@@ -314,13 +302,13 @@ namespace Blender._3D
                             ma = edges[this.Get(i)];
                             mi = edges[this.Get(i + 1)];
                             idMin = i + 1;
-                            idMax = 1;
+                            idMax = i;
                         }
                         else
                         {
                             ma = edges[this.Get(i + 1)];
                             mi = edges[this.Get(i)];
-                            idMin = 1;
+                            idMin = i;
                             idMax = i + 1;
                         }
                     }
@@ -329,16 +317,17 @@ namespace Blender._3D
                         index = 0;
                     else if (index >= bitmap.Height)
                         index = bitmap.Height - 1;
-                    ET[index] = ET[index] == null ? new List<ET>() : ET[index];
+                    if (ET[index] == null)
+                        ET[index] = new List<ET>();
                     double dx = ma.X - mi.X;
                     double dy = ma.Y - mi.Y;
                     double dz = ma.Z - mi.Z;
-                    double incx = dy == 0 ? 0 : dx / dy;
+                    double incx = (dy == 0) ? 0 : dx / dy;
                     ET[index].Add(
                         new ET(
                             (int)ma.Y + cy,
                             (int)mi.Y + cy,
-                            (int)mi.X + cx,
+                            mi.X + cx,
                             incx,
                             colors[idMin].R,
                             colors[idMin].G,
@@ -369,7 +358,7 @@ namespace Blender._3D
                         {
                             int x1 = (int)AET[j].XMin;
                             int x2 = (int)AET[j + 1].XMin;
-                            int y = 1;
+                            int y = i;
                             double dx = x2 - x1;
                             double incZ = (AET[j + 1].ZMin - AET[j].ZMin) / dx;
                             double z = AET[j].ZMin;
@@ -381,13 +370,12 @@ namespace Blender._3D
                             double incB = (AET[j + 1].BMin - AET[j].BMin) / dx;
                             while (x1++ <= x2)
                             {
-                                if (y < bitmap.Height && y >= 0 && x1 < bitmap.Width && x1 >= 0 && z > buffer[x1, y])
+                                if (y < bitmap.Height && y >= 0 && 
+                                    x1 < bitmap.Width && x1 >= 0 && 
+                                    z > buffer[x1, y])
                                 {
-                                    bitmap.SetPixel(x1, y, Color.FromArgb(
-                                        (int)(r > 255 ? 255 : r < 0 ? 0 : r),
-                                        (int)(g > 255 ? 255 : g < 0 ? 0 : g),
-                                        (int)(b > 255 ? 255 : b < 0 ? 0 : b))
-                                    );
+                                    //Console.WriteLine(r + " " + g + " " + b);
+                                    bitmap.SetPixel(x1, y, Color.FromArgb((int)r, (int)g, (int)b));
                                     buffer[x1, y] = z;
                                 }
                                 z += incZ;

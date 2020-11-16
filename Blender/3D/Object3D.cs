@@ -22,7 +22,7 @@ namespace Blender._3D
         private List<Edge> current = new List<Edge>();
         private List<Face> faces = new List<Face>();
         private List<Arr> normal = new List<Arr>();
-        private Arr light = new Arr(10, 10, 10);
+        private Arr light = new Arr(10.0, 10.0, 10.0);
         private double[,] buffer;
         private double[,] MA = new double[4, 4];
         public int dx = 286;
@@ -47,7 +47,7 @@ namespace Blender._3D
             }
             catch(OutOfMemoryException ex)
             {
-
+                Console.Write(ex.StackTrace);
             }
         }
 

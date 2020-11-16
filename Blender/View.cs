@@ -12,6 +12,7 @@ using System.IO;
 using System.Linq;
 using System.Resources;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -25,6 +26,9 @@ namespace Blender
         public const int CAVALEIRA = 3;
         public const int CABINET = 4;
         public const int OUTLOOK = 5;
+        public const int FLAT = 101;
+        public const int GOURAUD = 102;
+        public const int PHONG = 103;
         //
         private string tabflag;
         private bool move;
@@ -38,6 +42,9 @@ namespace Blender
         private FileInfo info;
         private int opt;
         private bool hidden;
+        private Color color;
+        private Point plight;
+        private bool lightmove;
         //
 
 
@@ -54,6 +61,8 @@ namespace Blender
             btTab_Click(btInfo, new EventArgs());
             opt = XY;
             this.pic3D.MouseWheel += pic3D_scroll;
+            color = Color.FromArgb(0, 122, 204);
+            //xLight.Visible = false;
         }
 
         private void pic3D_scroll (object sender, MouseEventArgs e)
@@ -69,7 +78,7 @@ namespace Blender
                 {
                     object3D.Scala(0.9, 0.9, 0.9);
 
-                    Console.WriteLine(zoom);
+                    //Console.WriteLine(zoom);
                     zoom += -0.1;
                 }
                 zoom = Math.Round(zoom, 1, MidpointRounding.AwayFromZero);
@@ -183,7 +192,7 @@ namespace Blender
             if(this.move)
             {
                 this.Location = new Point(this.Location.X + (e.X - p.X), this.Location.Y + (e.Y - p.Y));
-                Console.WriteLine(this.Location);
+                //Console.WriteLine(this.Location);
             }
         }
 
@@ -205,27 +214,39 @@ namespace Blender
                 switch (option)
                 {
                     case View.XY:
-                        object3D.Draw(bitmap, Pallete.BLUE, hidden, Object3D.XY);
+                        object3D.Draw(bitmap, color, hidden, Object3D.XY);
                         break;
 
                     case View.XZ:
-                        object3D.Draw(bitmap, Pallete.BLUE, hidden, Object3D.XZ);
+                        object3D.Draw(bitmap, color, hidden, Object3D.XZ);
                         break;
 
                     case View.YZ:
-                        object3D.Draw(bitmap, Pallete.BLUE, hidden, Object3D.YZ);
+                        object3D.Draw(bitmap, color, hidden, Object3D.YZ);
                         break;
 
                     case View.CAVALEIRA:
-                        object3D.Cavaleira(bitmap, Pallete.BLUE, hidden);
+                        object3D.Cavaleira(bitmap, color, hidden);
                         break;
 
                     case View.CABINET:
-                        object3D.Cabinet(bitmap, Pallete.BLUE, hidden);
+                        object3D.Cabinet(bitmap, color, hidden);
                         break;
 
                     case View.OUTLOOK:
-                        object3D.Outlook(bitmap, Pallete.BLUE, -Convert.ToInt32(txtDeep.Text), hidden);
+                        object3D.Outlook(bitmap, color, -Convert.ToInt32(txtDeep.Text), hidden);
+                        break;
+
+                    case View.FLAT:
+                        object3D.Flat(bitmap, color);
+                        break;
+
+                    case View.GOURAUD:
+                        object3D.Gouraud(bitmap, color);
+                        break;
+
+                    case View.PHONG:
+                        object3D.Phong(bitmap, color);
                         break;
                 }
                 pic3D.Image = bitmap.Bitmap;
@@ -298,6 +319,7 @@ namespace Blender
                     txtEdge.Text = edges.Count.ToString();
                     txtFaces.Text = faces.Count.ToString();
                     object3D = new Object3D(edges, faces);
+                    object3D.Light(xLight.Location.X, xLight.Location.Y, 10);
                     opt = XY;
                     this.LoadImageBox(opt, hidden);
                 }
@@ -500,6 +522,99 @@ namespace Blender
         {
             Help ex = new Help();
             ex.ShowDialog();
+        }
+
+        private void redBar_Scroll(object sender, EventArgs e)
+        {
+            int value = redBar.Value;
+            lbRed.Text = "[" + value + "]";
+            color = Color.FromArgb(redBar.Value, greenBar.Value, blueBar.Value);
+            this.LoadImageBox(opt, hidden);
+        }
+
+        private void greenBar_Scroll(object sender, EventArgs e)
+        {
+            int value = greenBar.Value;
+            lbGreen.Text = "[" + value + "]";
+            color = Color.FromArgb(redBar.Value, greenBar.Value, blueBar.Value);
+            this.LoadImageBox(opt, hidden);
+        }
+
+        private void blueBar_Scroll(object sender, EventArgs e)
+        {
+            int value = blueBar.Value;
+            lbBlue.Text = "[" + value + "]";
+            color = Color.FromArgb(redBar.Value, greenBar.Value, blueBar.Value);
+            this.LoadImageBox(opt, hidden);
+        }
+
+        private void btFlat_Click(object sender, EventArgs e)
+        {
+            picFlat.Image = Resources.OK;
+            picGouraud.Image = null;
+            picPhong.Image = null;
+            picDif.Image = Resources.OK;
+            picEspec.Image = Resources.OK;
+            //
+            opt = FLAT;
+            LoadImageBox(opt);
+        }
+
+        private void btGouraud_Click(object sender, EventArgs e)
+        {
+            picFlat.Image = null;
+            picGouraud.Image = Resources.OK;
+            picPhong.Image = null;
+            picDif.Image = Resources.OK;
+            picEspec.Image = Resources.OK;
+            //
+            opt = GOURAUD;
+            LoadImageBox(opt);
+        }
+
+        private void btPhong_Click(object sender, EventArgs e)
+        {
+            picFlat.Image = null;
+            picGouraud.Image = null;
+            picPhong.Image = Resources.OK;
+            picDif.Image = Resources.OK;
+            picEspec.Image = Resources.OK;
+            //
+            opt = PHONG;
+            LoadImageBox(opt);
+        }
+
+        private void xLight_MouseDown(object sender, MouseEventArgs e)
+        {
+            lightmove = true;
+            plight = new Point(e.X, e.Y);
+        }
+
+        private void xLight_MouseUp(object sender, MouseEventArgs e)
+        {
+            lightmove = false;
+        }
+
+        private void xLight_MouseMove(object sender, MouseEventArgs e)
+        {
+            if (lightmove)
+            {
+                int x = e.X + plight.X - 20;
+                int y = e.Y + plight.Y - 20;
+                if (x > pic3D.Location.X && x < pic3D.Location.X + pic3D.Width - xLight.Width && y > pic3D.Location.Y && x < pic3D.Location.Y + pic3D.Height - xLight.Height)
+                {
+                    plight = new Point(x, y);
+                    xLight.Location = plight;
+                    Thread t = new Thread(new ThreadStart(() =>
+                    {                        
+                        if (object3D != null)
+                            object3D.Light(x, y, 10);
+                    }));
+                    t.Start();
+                    LoadImageBox(opt);
+                    t.Join();
+                }
+            } 
         }
     }
 }
