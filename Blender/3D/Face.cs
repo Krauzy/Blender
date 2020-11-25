@@ -97,7 +97,7 @@ namespace Blender._3D
             return temp;
         }
 
-        public void Flat (DMA bitmap, Color color, List<Edge> edges, double[,] buffer, Arr light)       // Algoritmo Flat
+        public void Flat (DMA bitmap, Color color, List<Edge> edges, double[,] buffer, Arr light)     // Algoritmo Flat
         {
             if (this.Resolve(edges))
             {
