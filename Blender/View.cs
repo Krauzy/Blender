@@ -45,6 +45,8 @@ namespace Blender
         private Color color;
         private Point plight;
         private bool lightmove;
+        private Point checkpoint;
+        private bool ambient;
         //
 
 
@@ -62,6 +64,7 @@ namespace Blender
             opt = XY;
             this.pic3D.MouseWheel += pic3D_scroll;
             color = Color.FromArgb(0, 122, 204);
+            ambient = false;
             //xLight.Visible = false;
         }
 
@@ -163,12 +166,14 @@ namespace Blender
             {
                 btProjAram.Font = new Font(btProjAram.Font, FontStyle.Regular);
                 picSolid.Image = Resources.OK;
+                //btFlat_Click(btFlat, new EventArgs());
                 picAram.Image = null;
             }
             else
             {
                 btProjSolid.Font = new Font(btProjAram.Font, FontStyle.Regular);
                 picAram.Image = Resources.OK;
+                //btXY_Click(btXY, new EventArgs());
                 picSolid.Image = null;
             }
         }
@@ -389,6 +394,8 @@ namespace Blender
             picCab.Image = null;
             btPersp.Font = new Font(btXY.Font, FontStyle.Regular);
             picPersp.Image = null;
+            this.ActiveControl = null;
+            btProj_Click(btProjAram, new EventArgs());
         }
 
         private void btYZ_Click(object sender, EventArgs e)
@@ -407,6 +414,8 @@ namespace Blender
             picCab.Image = null;
             btPersp.Font = new Font(btXY.Font, FontStyle.Regular);
             picPersp.Image = null;
+            this.ActiveControl = null;
+            btProj_Click(btProjAram, new EventArgs());
         }
 
         private void btXZ_Click(object sender, EventArgs e)
@@ -425,6 +434,8 @@ namespace Blender
             picCab.Image = null;
             btPersp.Font = new Font(btXY.Font, FontStyle.Regular);
             picPersp.Image = null;
+            this.ActiveControl = null;
+            btProj_Click(btProjAram, new EventArgs());
         }
 
         private void btCavaleira_Click(object sender, EventArgs e)
@@ -443,6 +454,8 @@ namespace Blender
             picCab.Image = null;
             btPersp.Font = new Font(btXY.Font, FontStyle.Regular);
             picPersp.Image = null;
+            this.ActiveControl = null;
+            btProj_Click(btProjAram, new EventArgs());
         }
 
         private void btCab_Click(object sender, EventArgs e)
@@ -461,6 +474,8 @@ namespace Blender
             picCav.Image = null;
             btPersp.Font = new Font(btXY.Font, FontStyle.Regular);
             picPersp.Image = null;
+            this.ActiveControl = null;
+            btProj_Click(btProjAram, new EventArgs());
         }
 
         private void btPersp_Click(object sender, EventArgs e)
@@ -480,6 +495,7 @@ namespace Blender
             btCab.Font = new Font(btXY.Font, FontStyle.Regular);
             picCab.Image = null;
             this.ActiveControl = null;
+            btProj_Click(btProjAram,new EventArgs());
         }
 
         private void btPlus_Click(object sender, EventArgs e)
@@ -527,7 +543,7 @@ namespace Blender
         private void redBar_Scroll(object sender, EventArgs e)
         {
             int value = redBar.Value;
-            lbRed.Text = "[" + value + "]";
+            lbRed.Text = "[" + value + "]";                
             color = Color.FromArgb(redBar.Value, greenBar.Value, blueBar.Value);
             this.LoadImageBox(opt, hidden);
         }
@@ -553,8 +569,9 @@ namespace Blender
             picFlat.Image = Resources.OK;
             picGouraud.Image = null;
             picPhong.Image = null;
-            picDif.Image = Resources.OK;
-            picEspec.Image = Resources.OK;
+            //picDif.Image = Resources.OK;
+            //picEspec.Image = Resources.OK;
+            btProj_Click(btProjSolid, new EventArgs());
             //
             opt = FLAT;
             LoadImageBox(opt);
@@ -565,8 +582,9 @@ namespace Blender
             picFlat.Image = null;
             picGouraud.Image = Resources.OK;
             picPhong.Image = null;
-            picDif.Image = Resources.OK;
-            picEspec.Image = Resources.OK;
+            //picDif.Image = Resources.OK;
+            //picEspec.Image = Resources.OK;
+            btProj_Click(btProjSolid, new EventArgs());
             //
             opt = GOURAUD;
             LoadImageBox(opt);
@@ -577,8 +595,9 @@ namespace Blender
             picFlat.Image = null;
             picGouraud.Image = null;
             picPhong.Image = Resources.OK;
-            picDif.Image = Resources.OK;
-            picEspec.Image = Resources.OK;
+            //picDif.Image = Resources.OK;
+            //picEspec.Image = Resources.OK;
+            btProj_Click(btProjSolid, new EventArgs());
             //
             opt = PHONG;
             LoadImageBox(opt);
@@ -588,15 +607,17 @@ namespace Blender
         {
             lightmove = true;
             plight = new Point(e.X, e.Y);
+            checkpoint = new Point(e.X, e.Y);
         }
 
         private void xLight_MouseUp(object sender, MouseEventArgs e)
         {
-            lightmove = false;
+            lightmove = false;           
         }
 
         private void xLight_MouseMove(object sender, MouseEventArgs e)
         {
+            int delay = 10;
             if (lightmove)
             {
                 int x = e.X + plight.X - 20;
@@ -605,16 +626,36 @@ namespace Blender
                 {
                     plight = new Point(x, y);
                     xLight.Location = plight;
-                    Thread t = new Thread(new ThreadStart(() =>
-                    {                        
+                    if (checkpoint.X >= plight.X + delay || checkpoint.X <= plight.X - delay || checkpoint.Y >= plight.Y + delay || checkpoint.Y <= plight.Y - delay)
+                    {
                         if (object3D != null)
+                        {
                             object3D.Light(x, y, 10);
-                    }));
-                    t.Start();
-                    LoadImageBox(opt);
-                    t.Join();
+                            LoadImageBox(opt);
+                        }
+                    }
                 }
             } 
+        }
+
+        private void btAmb_Click(object sender, EventArgs e)
+        {
+            this.ActiveControl = null;
+        }
+
+        private void btDif_Click(object sender, EventArgs e)
+        {
+            this.ActiveControl = null;
+        }
+
+        private void btForce_Click(object sender, EventArgs e)
+        {
+            this.ActiveControl = null;
+        }
+
+        private void btEspec_Click(object sender, EventArgs e)
+        {
+            this.ActiveControl = null;
         }
     }
 }

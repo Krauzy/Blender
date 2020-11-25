@@ -124,7 +124,7 @@
             this.btConfig = new System.Windows.Forms.Button();
             this.btSolid = new System.Windows.Forms.Button();
             this.btOpen = new System.Windows.Forms.Button();
-            this.xLight = new System.Windows.Forms.PictureBox();
+            this.xLight = new System.Windows.Forms.Button();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pic3D)).BeginInit();
             this.outerProj.SuspendLayout();
@@ -160,7 +160,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.picXZ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picYZ)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picXY)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xLight)).BeginInit();
             this.SuspendLayout();
             // 
             // pnMove
@@ -716,6 +715,7 @@
             this.btEspec.Text = "       Especular";
             this.btEspec.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btEspec.UseVisualStyleBackColor = false;
+            this.btEspec.Click += new System.EventHandler(this.btEspec_Click);
             // 
             // picForce
             // 
@@ -743,6 +743,7 @@
             this.btForce.Text = "         Forçar";
             this.btForce.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btForce.UseVisualStyleBackColor = false;
+            this.btForce.Click += new System.EventHandler(this.btForce_Click);
             // 
             // picDif
             // 
@@ -770,6 +771,7 @@
             this.btDif.Text = "         Difusa";
             this.btDif.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btDif.UseVisualStyleBackColor = false;
+            this.btDif.Click += new System.EventHandler(this.btDif_Click);
             // 
             // picAmb
             // 
@@ -797,6 +799,7 @@
             this.btAmb.Text = "      Ambiente";
             this.btAmb.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btAmb.UseVisualStyleBackColor = false;
+            this.btAmb.Click += new System.EventHandler(this.btAmb_Click);
             // 
             // innerInfo
             // 
@@ -1403,15 +1406,19 @@
             // 
             // xLight
             // 
-            this.xLight.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.xLight.Cursor = System.Windows.Forms.Cursors.SizeAll;
-            this.xLight.Image = global::Blender.Properties.Resources.light;
-            this.xLight.Location = new System.Drawing.Point(12, 79);
+            this.xLight.FlatAppearance.BorderSize = 0;
+            this.xLight.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.xLight.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.xLight.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.xLight.Font = new System.Drawing.Font("Century Gothic", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.xLight.ForeColor = System.Drawing.SystemColors.AppWorkspace;
+            this.xLight.Location = new System.Drawing.Point(12, 77);
             this.xLight.Name = "xLight";
-            this.xLight.Size = new System.Drawing.Size(35, 35);
-            this.xLight.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.xLight.Size = new System.Drawing.Size(43, 40);
             this.xLight.TabIndex = 13;
-            this.xLight.TabStop = false;
+            this.xLight.Text = "LUZ";
+            this.xLight.UseVisualStyleBackColor = true;
             this.xLight.MouseDown += new System.Windows.Forms.MouseEventHandler(this.xLight_MouseDown);
             this.xLight.MouseMove += new System.Windows.Forms.MouseEventHandler(this.xLight_MouseMove);
             this.xLight.MouseUp += new System.Windows.Forms.MouseEventHandler(this.xLight_MouseUp);
@@ -1420,8 +1427,8 @@
             // 
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
             this.ClientSize = new System.Drawing.Size(1000, 660);
-            this.Controls.Add(this.btOpen);
             this.Controls.Add(this.xLight);
+            this.Controls.Add(this.btOpen);
             this.Controls.Add(this.outerMain);
             this.Controls.Add(this.btSolid);
             this.Controls.Add(this.btConfig);
@@ -1482,7 +1489,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.picXZ)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picYZ)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.picXY)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xLight)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -1585,7 +1591,7 @@
         private System.Windows.Forms.Button btPlus;
         private System.Windows.Forms.Button btMinus;
         private System.Windows.Forms.Label txtDeep;
-        private System.Windows.Forms.PictureBox xLight;
+        private System.Windows.Forms.Button xLight;
     }
 }
 

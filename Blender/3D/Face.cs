@@ -12,7 +12,7 @@ namespace Blender._3D
     class Face
     {
         private List<int> faces;
-        private Arr look = new Arr(0, 0, 1);
+        private Arr look = new Arr(0, 0, 0);
         private Arr normal;
 
         public Face (List<int> faces)
@@ -25,6 +25,7 @@ namespace Blender._3D
             get => this.normal; 
             set => this.normal = value; 
         }
+        public Arr Look { get => this.look; set => this.look = value; }
 
         public int Get (int index)
         {
@@ -408,22 +409,22 @@ namespace Blender._3D
                 la = new Edge(0.1, 0.1, 0.1),
                 ld = new Edge(0.5, 0.5, 0.5),
                 le = new Edge(0.5, 0.5, 0.5),
-                ka = new Edge(1, 0.9, 0.9),
-                kd = new Edge(color.R / 255, color.G / 255, color.B / 255),
+                ka = new Edge(0.9, 0.9, 0.9),
+                kd = new Edge((double)color.R / 255, (double)color.G / 255, (double)color.B / 255),
                 ke = new Edge(0.5, 0.5, 0.5);
                 int exp = 10;
                 double dif, esp;
                 int values = bitmap.Height;
                 List<ET>[] ET = new List<ET>[values];
                 int i;
-                double mod = Math.Sqrt(Methods.Squared(light.X) + Methods.Squared(light.Y) + Methods.Squared(light.Z));
-                light.Z /= mod;
+                double mod = Math.Sqrt(Math.Pow(light.X, 2) + Math.Pow(light.Y, 2) + Math.Pow(light.Z, 2));
+                light.X /= mod;
                 light.Y /= mod;
                 light.Z /= mod;
                 h.X = light.X + look.X;
                 h.Y = light.Y + look.Y;
                 h.Z = light.Z + look.Z;
-                mod = Math.Sqrt(Methods.Squared(h.X) + Methods.Squared(h.Y) + Methods.Squared(h.Z));
+                mod = Math.Sqrt(Math.Pow(h.X, 2) + Math.Pow(h.Y, 2) + Math.Pow(h.Z, 2));
                 h.X /= mod;
                 h.Y /= mod;
                 h.Z /= mod;
@@ -462,7 +463,8 @@ namespace Blender._3D
                         index = 0;
                     else if (index >= bitmap.Height)
                         index = bitmap.Height - 1;
-                    ET[index] = ET[index] == null ? new List<ET>() : ET[index];
+                    if (ET[index] == null)
+                        ET[index] = new List<ET>();
                     double dx = ma.X - mi.X;
                     double dy = ma.Y - mi.Y;
                     double dz = ma.Z - mi.Z;
@@ -502,7 +504,7 @@ namespace Blender._3D
                         {
                             int x1 = (int)AET[j].XMin;
                             int x2 = (int)AET[j + 1].XMin;
-                            int y = 1;
+                            int y = i;
                             double dx = x2 - x1;
                             double incZ = (AET[j + 1].ZMin - AET[j].ZMin) / dx;
                             double z = AET[j].ZMin;
@@ -523,6 +525,9 @@ namespace Blender._3D
                                         (int)(Math.Abs(la.Y * ka.Y + ld.Y * kd.Y * dif + le.Y * ke.Y * esp) * 255),
                                         (int)(Math.Abs(la.Z * ka.Z + ld.Z * kd.Z * dif + le.Z * ke.Z * esp) * 255)
                                     );
+                                    //Console.WriteLine((Math.Abs(la.X * ka.X + ld.X * kd.X * dif + le.X * ke.X * esp) * 255) + " | " + (Math.Abs(la.Y * ka.Y + ld.Y * kd.Y * dif + le.Y * ke.Y * esp) * 255) + " | " + (Math.Abs(la.Z * ka.Z + ld.Z * kd.Z * dif + le.Z * ke.Z * esp) * 255));
+                                    bitmap.SetPixel(x1, y, color);
+                                    buffer[x1, y] = z;
                                 }
                                 z += incZ;
                                 r += incR;
