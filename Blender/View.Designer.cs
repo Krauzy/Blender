@@ -720,6 +720,7 @@
             // picForce
             // 
             this.picForce.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(30)))));
+            this.picForce.Enabled = false;
             this.picForce.Location = new System.Drawing.Point(140, 89);
             this.picForce.Name = "picForce";
             this.picForce.Size = new System.Drawing.Size(30, 30);
@@ -730,6 +731,7 @@
             // btForce
             // 
             this.btForce.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));
+            this.btForce.Enabled = false;
             this.btForce.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(122)))), ((int)(((byte)(204)))));
             this.btForce.FlatAppearance.BorderSize = 3;
             this.btForce.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(45)))), ((int)(((byte)(45)))), ((int)(((byte)(45)))));

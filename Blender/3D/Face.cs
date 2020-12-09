@@ -56,7 +56,8 @@ namespace Blender._3D
             normal.X = AB.Y * AC.Z - AB.Z * AC.Y;
             normal.Y = AB.Z * AC.X - AB.X * AC.Z;
             normal.Z = AB.X * AC.Y - AB.Y * AC.X;
-            double mod = Math.Sqrt(Methods.Squared(normal.X) + Methods.Squared(normal.Y) + Methods.Squared(normal.Z));            
+            //
+            double mod = Math.Sqrt(Methods.Squared(normal.X) + Methods.Squared(normal.Y) + Methods.Squared(normal.Z));
             if (mod == 0 || mod.ToString().Equals("NaN"))
                 normal.X = normal.Y = normal.Z = 0;
             else
@@ -97,7 +98,7 @@ namespace Blender._3D
             return temp;
         }
 
-        public void Flat (DMA bitmap, Color color, List<Edge> edges, double[,] buffer, Arr light)     // Algoritmo Flat
+        public void Flat (DMA bitmap, Color color, List<Edge> edges, double[,] buffer, Arr light, Color cdif, Color camb)     // Algoritmo Flat
         {
             if (this.Resolve(edges))
             {
@@ -110,9 +111,9 @@ namespace Blender._3D
                 la = new Edge(0.1, 0.1, 0.1),
                 ld = new Edge(0.5, 0.5, 0.5),
                 le = new Edge(0.5, 0.5, 0.5),
-                ka = new Edge(1, 0.9, 0.9),
+                ka = new Edge((double)camb.R / 255, (double)camb.G / 255, (double)camb.B / 255),
                 kd = new Edge((double)color.R / 255, (double)color.G / 255, (double)color.B / 255),
-                ke = new Edge(0.5, 0.5, 0.5);
+                ke = new Edge((double)cdif.R / 255, (double)cdif.G / 255, (double)cdif.B / 255);
                 int exp = 10;
                 double dif, esp;
                 int values = bitmap.Height;
@@ -271,7 +272,6 @@ namespace Blender._3D
                             (int)(Math.Abs(la.X * ka.X + ld.X * kd.X * dif + le.X * ke.X * esp) * 255),
                             (int)(Math.Abs(la.Y * ka.Y + ld.Y * kd.Y * dif + le.Y * ke.Y * esp) * 255),
                             (int)(Math.Abs(la.Z * ka.Z + ld.Z * kd.Z * dif + le.Z * ke.Z * esp) * 255)));
-                    //Console.WriteLine((Math.Abs(la.X * ka.X + ld.X * kd.X * dif + le.X * ke.X * esp) * 255) + " | " + (Math.Abs(la.Y * ka.Y + ld.Y * kd.Y * dif + le.Y * ke.Y * esp) * 255) +  " | " + (Math.Abs(la.Z * ka.Z + ld.Z * kd.Z * dif + le.Z * ke.Z * esp) * 255));
                 }
                 int idMax;
                 int idMin;
@@ -340,6 +340,9 @@ namespace Blender._3D
                             dy == 0 ? 0 : dz / dy
                         )
                     );
+                    //Console.WriteLine("Rinc: " + (colors[idMax].R - colors[idMin].R) / dy + "");
+                    //Console.WriteLine("Ginc: " + (colors[idMax].G - colors[idMin].G) / dy + "");
+                    //Console.WriteLine("Binc: " + (colors[idMax].B - colors[idMin].B) / dy + "");
                 }
                 List<ET> AET = new List<ET>();
                 i = 0;

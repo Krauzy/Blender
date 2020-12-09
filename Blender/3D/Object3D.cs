@@ -27,6 +27,7 @@ namespace Blender._3D
         private double[,] MA = new double[4, 4];
         public int dx = 286;
         public int dy = 296;
+        //
 
         public Object3D (List<Edge> edges, List<Face> faces)
         {
@@ -153,13 +154,13 @@ namespace Blender._3D
             }
         }
 
-        public void Flat (DMA bitmap, Color color)
+        public void Flat (DMA bitmap, Color color, Color dif, Color amb)
         {
             this.Buffer(bitmap.Width, bitmap.Height);
             foreach (Face f in this.faces)
             {
                 f.Resolve(this.current);
-                f.Flat(bitmap, color, this.current, this.buffer, this.light);
+                f.Flat(bitmap, color, this.current, this.buffer, this.light, dif, amb);
             }
         }
 

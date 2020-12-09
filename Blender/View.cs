@@ -46,9 +46,13 @@ namespace Blender
         private Point plight;
         private bool lightmove;
         private Point checkpoint;
-        private bool ambient;
         //
-
+        private bool ambient;
+        private bool dif;
+        private bool esp;
+        private Color ambcolor;
+        private Color difcolor;
+        private Color espcolor;
 
         public View()
         {
@@ -65,7 +69,12 @@ namespace Blender
             this.pic3D.MouseWheel += pic3D_scroll;
             color = Color.FromArgb(0, 122, 204);
             ambient = false;
-            //xLight.Visible = false;
+            dif = false;
+            esp = false;
+            //
+            ambcolor = Color.FromArgb(100, 100, 100);
+            difcolor = Color.FromArgb(100, 100, 100);
+            espcolor = Color.FromArgb(100, 100, 100);
         }
 
         private void pic3D_scroll (object sender, MouseEventArgs e)
@@ -243,7 +252,7 @@ namespace Blender
                         break;
 
                     case View.FLAT:
-                        object3D.Flat(bitmap, color);
+                        object3D.Flat(bitmap, color, difcolor, ambcolor);
                         break;
 
                     case View.GOURAUD:
@@ -543,25 +552,48 @@ namespace Blender
         private void redBar_Scroll(object sender, EventArgs e)
         {
             int value = redBar.Value;
-            lbRed.Text = "[" + value + "]";                
-            color = Color.FromArgb(redBar.Value, greenBar.Value, blueBar.Value);
-            this.LoadImageBox(opt, hidden);
+            lbRed.Text = "[" + value + "]";
+            Color tempc = Color.FromArgb(redBar.Value, greenBar.Value, blueBar.Value);
+            if (ambient)
+                ambcolor = tempc;
+            if (dif)
+                difcolor = tempc;
+            if (esp)
+                color = tempc;
+            if(object3D != null)
+                this.LoadImageBox(opt, hidden);
         }
 
         private void greenBar_Scroll(object sender, EventArgs e)
         {
             int value = greenBar.Value;
             lbGreen.Text = "[" + value + "]";
-            color = Color.FromArgb(redBar.Value, greenBar.Value, blueBar.Value);
-            this.LoadImageBox(opt, hidden);
+            Color tempc = Color.FromArgb(redBar.Value, greenBar.Value, blueBar.Value);
+            if (ambient)
+                ambcolor = tempc;
+            if (dif)
+                difcolor = tempc;
+            if (esp)
+                color = tempc;
+
+            if (object3D != null)
+                this.LoadImageBox(opt, hidden);
         }
 
         private void blueBar_Scroll(object sender, EventArgs e)
         {
             int value = blueBar.Value;
             lbBlue.Text = "[" + value + "]";
-            color = Color.FromArgb(redBar.Value, greenBar.Value, blueBar.Value);
-            this.LoadImageBox(opt, hidden);
+            Color tempc = Color.FromArgb(redBar.Value, greenBar.Value, blueBar.Value);
+            if (ambient)
+                ambcolor = tempc;
+            if (dif)
+                difcolor = tempc;
+            if (esp)
+                color = tempc;
+
+            if (object3D != null)
+                this.LoadImageBox(opt, hidden);
         }
 
         private void btFlat_Click(object sender, EventArgs e)
@@ -641,21 +673,57 @@ namespace Blender
         private void btAmb_Click(object sender, EventArgs e)
         {
             this.ActiveControl = null;
+            picAmb.Image = Resources.OK;
+            picEspec.Image = null;
+            picDif.Image = null;
+            ambient = true;
+            dif = false;
+            esp = false;
+            redBar.Value = ambcolor.R;
+            lbRed.Text = ambcolor.R.ToString();            
+            greenBar.Value = ambcolor.G;
+            lbGreen.Text = ambcolor.G.ToString();
+            blueBar.Value = ambcolor.B;
+            lbBlue.Text = ambcolor.B.ToString();
         }
 
         private void btDif_Click(object sender, EventArgs e)
         {
             this.ActiveControl = null;
+            picAmb.Image = null;
+            picEspec.Image = null;
+            picDif.Image = Resources.OK;
+            ambient = false;
+            dif = true;
+            esp = false;
+            redBar.Value = difcolor.R;
+            lbRed.Text = difcolor.R.ToString();
+            greenBar.Value = difcolor.G;
+            lbGreen.Text = difcolor.G.ToString();
+            blueBar.Value = difcolor.B;
+            lbBlue.Text = difcolor.B.ToString();
         }
 
-        private void btForce_Click(object sender, EventArgs e)
+        private void btForce_Click(object sender, EventArgs e) // Disabled
         {
-            this.ActiveControl = null;
+            //this.ActiveControl = null;
         }
 
         private void btEspec_Click(object sender, EventArgs e)
         {
             this.ActiveControl = null;
+            picAmb.Image = null;
+            picEspec.Image = Resources.OK;
+            picDif.Image = null;
+            ambient = false;
+            dif = true;
+            esp = false;
+            redBar.Value = color.R;
+            lbRed.Text = color.R.ToString();
+            greenBar.Value = color.G;
+            lbGreen.Text = color.G.ToString();
+            blueBar.Value = color.B;
+            lbBlue.Text = color.B.ToString();
         }
     }
 }
